@@ -1,0 +1,58 @@
+{% set name = "cspy" %}
+{% set version = "1.0.3" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/torressa/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: a586f7f8a261770bfa0c06ad994e87911bac92200c418bfd48ba5d7a4dde1734
+  patches:
+    - patches/0001-unvendor-lemon-spdlog.patch
+    - patches/0002-fix-lemon.patch
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - cmake
+    - ninja
+  host:
+    - spdlog-fmt-embed
+    - lemon
+    - swig
+    - python
+    - setuptools
+    - wheel
+  run:
+    - networkx
+    - numpy
+
+about:
+  home: https://github.com/torressa/cspy
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt
+  summary: |
+    cspy is an open source Python package that gathers some algorithms
+    to solve the (resource) Constrained Shortest Path (CSP) problem.
+  description: |
+    cspy is an open source Python package that gathers some algorithms
+    to solve the (resource) Constrained Shortest Path (CSP) problem.
+    The CSP problem has been studied in the mathematical optimisation
+    literature as allows the modelling of a wide range of problems.
+    They have proven useful in a wide variety of problems including:
+    the vehicle routing problem with time windows, the technician routing
+    and scheduling problem, the capacitated arc-routing problem, on-demand
+    transportation systems, aircraft scheduling, and, airport ground
+    movement.
+  doc_url: https://torressa.github.io/cspy
+  dev_url: https://github.com/torressa/cspy
+
+extra:
+  recipe-maintainers:
+    - lorepirri

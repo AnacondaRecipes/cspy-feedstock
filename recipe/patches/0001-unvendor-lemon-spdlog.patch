@@ -1,0 +1,43 @@
+From baf410ffd928054fbaa2bb27975c8466b7df9ea1 Mon Sep 17 00:00:00 2001
+From: Lorenzo Pirritano <lpirritano@anaconda.com>
+Date: Thu, 20 Jun 2024 21:07:21 +0200
+Subject: [PATCH 1/2] unvendor lemon spdlog
+
+---
+ CMakeLists.txt | 20 +++-----------------
+ 1 file changed, 3 insertions(+), 17 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 16b91f2..d94871f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -117,23 +117,9 @@ message(STATUS "Build Dotnet: ${BUILD_DOTNET}")
+ 
+ include(FetchContent)
+ set(FETCHCONTENT_QUIET OFF)
+-set(LEMON_BUILD_TESTING OFF)
+-# Remove shared libs for LEMON
+-set(BUILD_SHARED_LIBS_OLD ${BUILD_SHARED_LIBS})
+-set(BUILD_SHARED_LIBS OFF)
+-FetchContent_Declare(
+-  LEMON
+-  GIT_REPOSITORY "https://github.com/MultiFlow/LEMON.git"
+-  GIT_TAG "multiflow/dev")
+-FetchContent_MakeAvailable(LEMON)
+-set(BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS_OLD})
+-
+-# Add logger
+-FetchContent_Declare(
+-  spdlog
+-  GIT_REPOSITORY "https://github.com/gabime/spdlog.git"
+-  GIT_TAG "v1.x")
+-FetchContent_MakeAvailable(spdlog)
++
++find_package(LEMON)
++find_package(spdlog)
+ 
+ enable_testing()
+ include(cpp)
+-- 
+2.39.1
+
