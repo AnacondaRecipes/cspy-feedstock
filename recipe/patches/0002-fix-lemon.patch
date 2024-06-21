@@ -45,7 +45,7 @@ index a3045d2..4a38afb 100644
  
  if(LEMON_FOUND)
 -  message(STATUS "Found LEMON: ${LEMON_INCLUDE_DIR}")
-+  message(STATUS "Found lemon: ${LEMON_INCLUDE_DIR}")
++  message(STATUS "lemon include: ${LEMON_INCLUDE_DIR}")
 +  message(STATUS "lemon lib: ${LEMON_LIBRARY}")
    set(LEMON_INCLUDE_DIRS ${LEMON_INCLUDE_DIR})
    set(LEMON_LIBRARIES ${LEMON_LIBRARY})
