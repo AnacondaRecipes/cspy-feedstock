@@ -2,4 +2,4 @@ upload_channels:
   - sfe1ed40
 
 channels:
-    - https://staging.continuum.io/prefect/fs/lemon-feedstock/pr1/a7f922d
+    - https://staging.continuum.io/prefect/fs/lemon-feedstock/pr1/4a68186
