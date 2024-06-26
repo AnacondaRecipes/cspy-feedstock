@@ -9,13 +9,15 @@ source:
   url: https://github.com/torressa/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
   sha256: a586f7f8a261770bfa0c06ad994e87911bac92200c418bfd48ba5d7a4dde1734
   patches:
-    - patches/0001-unvendor-lemon-spdlog.patch
-    - patches/0002-fix-lemon.patch
+    - patches/0001-fix-export-name-for-lemon-in-findlemon.patch
+    # - patches/0002-python-sdist.patch
 
 build:
   number: 0
   missing_dso_whitelist:
     - '$RPATH/ld64.so.1'  # [s390x]
+  ignore_run_exports:
+    - spdlog-fmt-embed
 
 requirements:
   build:
@@ -26,6 +28,7 @@ requirements:
     - patch       # [not win]
     - m2-patch    # [win]
   host:
+    - pip
     - spdlog-fmt-embed
     - lemon
     - swig
@@ -35,6 +38,20 @@ requirements:
   run:
     - networkx
     - numpy
+
+test:
+  imports:
+    - cspy
+  requires:
+    - pip
+    - pytest
+  source_files:
+    - test/python
+  commands:
+    - pip check
+    - ls test/python
+    # - pytest -v test/python
+    # - python -m unittest discover -s test/python/
 
 about:
   home: https://github.com/torressa/cspy
