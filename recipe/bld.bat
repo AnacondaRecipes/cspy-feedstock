@@ -8,7 +8,9 @@ cmake . -B build -G"Ninja" %CMAKE_ARGS%      ^
     -DBUILD_TESTING=OFF                      ^
     -DBUILD_PYTHON=ON                        ^
     -DBUILD_SHARED_LIBS=ON                   ^
-    -DPython3_EXECUTABLE="%PYTHON%"
+    -DPython3_EXECUTABLE="%PYTHON%"          ^
+    -DFETCHCONTENT_TRY_FIND_PACKAGE_MODE=ALWAYS ^
+    -DCMAKE_REQUIRE_FIND_PACKAGE_LEMON=ON
 if errorlevel 1 exit 1
 
 :: Install.
