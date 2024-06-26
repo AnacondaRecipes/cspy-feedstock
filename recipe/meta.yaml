@@ -40,8 +40,8 @@ requirements:
     - numpy
 
 test:
-  imports:
-    - cspy
+  # imports:
+  #   - cspy
   requires:
     - pip
     - pytest
@@ -49,7 +49,10 @@ test:
     - test/python
   commands:
     - pip check
-    - ls test/python
+    - echo ====
+    - ls -la $SP_DIR/cspy
+    - echo ====
+    # - ls test/python
     # - pytest -v test/python
     # - python -m unittest discover -s test/python/
 
