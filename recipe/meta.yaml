@@ -10,7 +10,7 @@ source:
   sha256: a586f7f8a261770bfa0c06ad994e87911bac92200c418bfd48ba5d7a4dde1734
   patches:
     - patches/0001-fix-export-name-for-lemon-in-findlemon.patch
-    # - patches/0002-python-sdist.patch
+    - patches/0002-fix-use-spdlog-target.patch
 
 build:
   number: 0
@@ -30,7 +30,7 @@ requirements:
   host:
     - python
     - pip
-    - spdlog-fmt-embed
+    - spdlog
     - lemon
     - swig
     - setuptools
