@@ -16,8 +16,6 @@ build:
   number: 0
   missing_dso_whitelist:
     - '$RPATH/ld64.so.1'  # [s390x]
-  ignore_run_exports:
-    - spdlog-fmt-embed
 
 requirements:
   build:
@@ -31,6 +29,8 @@ requirements:
     - python
     - pip
     - spdlog
+    # in run_exports of spdlog
+    - fmt
     - lemon
     - swig
     - setuptools
@@ -50,12 +50,7 @@ test:
     - test/python
   commands:
     - pip check
-    - echo ====
-    - ls -la $SP_DIR/cspy
-    - echo ====
-    # - ls test/python
-    # - pytest -v test/python
-    # - python -m unittest discover -s test/python/
+    - python -m unittest discover -s test/python/
 
 about:
   home: https://github.com/torressa/cspy
