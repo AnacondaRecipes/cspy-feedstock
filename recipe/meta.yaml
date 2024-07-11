@@ -76,3 +76,5 @@ about:
 extra:
   recipe-maintainers:
     - lorepirri
+  skip-lints:
+    - host_section_needs_exact_pinnings
