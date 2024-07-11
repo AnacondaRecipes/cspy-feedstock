@@ -13,7 +13,7 @@ cmake . -B build -G"Visual Studio 16 2019" %CMAKE_ARGS%      ^
     -DCMAKE_REQUIRE_FIND_PACKAGE_LEMON=ON
 if errorlevel 1 exit 1
 
-cmake --build build --config Release --target install -v
+cmake --build build --config Release --target ALL_BUILD -v
 if errorlevel 1 exit 1
 
 
