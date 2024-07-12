@@ -58,10 +58,7 @@ test:
     - test/python
   commands:
     - pip check
-    # - python -m unittest discover -s test/python/
-    - cd test
-    - cd python
-    - pytest -v . -k "not test_astar_time_limit" -o python_files=tests_*.py
+    - python -m unittest discover -s test/python/
 
 about:
   home: https://github.com/torressa/cspy
