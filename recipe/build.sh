@@ -13,7 +13,7 @@ cmake . -B build -G Ninja $CMAKE_ARGS  \
         -DFETCHCONTENT_TRY_FIND_PACKAGE_MODE=ALWAYS \
         -DCMAKE_REQUIRE_FIND_PACKAGE_LEMON=ON
 
-cmake --build build --config Release --target all -v
+cmake --build build --target all -v
 
 # The build will create a wheel file in build/python/dist
 # we install that using the usual python script.

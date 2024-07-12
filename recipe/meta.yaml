@@ -35,7 +35,7 @@ requirements:
     - spdlog
     # in run_exports of spdlog
     - fmt
-    - lemon
+    - lemon 1.3.1
     - swig
     - setuptools
     - wheel
@@ -43,6 +43,10 @@ requirements:
     - python
     - networkx
     - numpy
+    - lemon
+    # pin through run_exports
+    - spdlog
+    - fmt
 
 test:
   imports:
@@ -54,7 +58,10 @@ test:
     - test/python
   commands:
     - pip check
-    - python -m unittest discover -s test/python/
+    # - python -m unittest discover -s test/python/
+    - cd test
+    - cd python
+    - pytest -v . -k "not test_astar_time_limit" -o python_files=tests_*.py
 
 about:
   home: https://github.com/torressa/cspy

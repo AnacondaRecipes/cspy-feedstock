@@ -16,7 +16,7 @@ cmake . -B build -G"Ninja" %CMAKE_ARGS%       ^
     -DCMAKE_REQUIRE_FIND_PACKAGE_LEMON=ON
 if errorlevel 1 exit 1
 
-cmake --build build --config Release --target all -v
+cmake --build build --target all -v
 if errorlevel 1 exit 1
 
 :: Install the wheel
