@@ -1,9 +1,12 @@
-dir %PREFIX%\Library
+:: cmd
+echo "Building %PKG_NAME%."
+
+:: Generate the build files.
+echo "Generating the build files..."
 
 :: Configure. Switch off unit tests (require gtest / googletest)
-cmake . -B build -G"Visual Studio 16 2019" %CMAKE_ARGS%      ^
-    -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  ^
-    -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX%     ^
+cmake . -B build -G"Ninja" %CMAKE_ARGS%       ^
+    -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" ^
     -DCMAKE_BUILD_TYPE=Release               ^
     -DBUILD_TESTING=OFF                      ^
     -DBUILD_PYTHON=ON                        ^
@@ -13,10 +16,12 @@ cmake . -B build -G"Visual Studio 16 2019" %CMAKE_ARGS%      ^
     -DCMAKE_REQUIRE_FIND_PACKAGE_LEMON=ON
 if errorlevel 1 exit 1
 
-cmake --build build --config Release --target ALL_BUILD -v
+cmake --build build --config Release --target all -v
 if errorlevel 1 exit 1
 
+:: Install the wheel
+FOR %%w in (build\python\dist\*.whl) DO %PYTHON% -m pip install %%w --no-deps --no-build-isolation -v
 
 :: Install.
-cmake --install .\build
+cmake --install build
 if errorlevel 1 exit 1

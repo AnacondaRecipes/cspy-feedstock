@@ -11,6 +11,10 @@ source:
   patches:
     - patches/0001-fix-export-name-for-lemon-in-findlemon.patch
     - patches/0002-fix-use-spdlog-target.patch
+    - patches/0003-add-win-symbols-remove-origin.patch
+    - patches/0004-do-not-download-swig.patch
+    - patches/0005-do-not-create-copy-dot-lib-directory.patch
+    - patches/0006-install-the-biDirectionalCpp.dll.patch
 
 build:
   number: 0

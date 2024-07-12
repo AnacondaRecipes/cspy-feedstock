@@ -1,0 +1,39 @@
+From 316855e546a6d07618a106b0efbc673a2c95b255 Mon Sep 17 00:00:00 2001
+From: Lorenzo Pirritano <lpirritano@anaconda.com>
+Date: Fri, 12 Jul 2024 20:13:51 +0200
+Subject: [PATCH 4/6] do not download swig
+
+---
+ CMakeLists.txt | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 16b91f2..f88fb1b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -138,14 +138,14 @@ FetchContent_MakeAvailable(spdlog)
+ enable_testing()
+ include(cpp)
+ 
+-if(WIN32
+-   AND (BUILD_PYTHON
+-        OR BUILD_JAVA
+-        OR BUILD_DOTNET))
+-  message(STATUS "Getting SWIG: ...")
+-  include(swig)
+-  message(STATUS "Getting SWIG: ...DONE")
+-endif()
++# if(WIN32
++#    AND (BUILD_PYTHON
++#         OR BUILD_JAVA
++#         OR BUILD_DOTNET))
++#   message(STATUS "Getting SWIG: ...")
++#   include(swig)
++#   message(STATUS "Getting SWIG: ...DONE")
++# endif()
+ 
+ include(python)
+ include(dotnet)
+-- 
+2.39.1
+

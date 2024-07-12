@@ -1,0 +1,25 @@
+From b03ee033b805838407d3aadc09f324501bea658f Mon Sep 17 00:00:00 2001
+From: Lorenzo Pirritano <lpirritano@anaconda.com>
+Date: Fri, 12 Jul 2024 21:13:48 +0200
+Subject: [PATCH 6/6] install the biDirectionalCpp.dll
+
+---
+ src/cc/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/cc/CMakeLists.txt b/src/cc/CMakeLists.txt
+index d3942f7..c03cafc 100644
+--- a/src/cc/CMakeLists.txt
++++ b/src/cc/CMakeLists.txt
+@@ -36,6 +36,6 @@ install(
+   EXPORT ${PROJECT_NAME}Targets
+   PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/bidirectional
+   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} # RUNTIME DESTINATION
+-          # ${CMAKE_INSTALL_BINDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+ )
+-- 
+2.39.1
+
