@@ -21,7 +21,5 @@ cmake --build build --target all -v
 #  e.g. cspy-1.0.3-cp38-cp38-linux_aarch64.whl
 ${PYTHON} -m pip install build/python/dist/cspy-*.whl --no-deps --no-build-isolation -vv
 
-# cd build && ctest --verbose -R python_unittest
-
 # install
 cmake --install ./build
