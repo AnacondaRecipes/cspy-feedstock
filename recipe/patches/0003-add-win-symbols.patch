@@ -1,7 +1,7 @@
 From fc0634c1ca3d7b11a20872d66d52f59706bde70b Mon Sep 17 00:00:00 2001
 From: Lorenzo Pirritano <lpirritano@anaconda.com>
 Date: Tue, 16 Jul 2024 14:56:44 +0200
-Subject: [PATCH 3/6] add win symbols
+Subject: [PATCH 3/7] add win symbols
 
 ---
  src/cc/CMakeLists.txt | 1 +

@@ -1,7 +1,7 @@
 From b0c254830cdb918591b68fb0e4dff6f03916236f Mon Sep 17 00:00:00 2001
 From: Lorenzo Pirritano <lpirritano@anaconda.com>
 Date: Tue, 16 Jul 2024 14:59:54 +0200
-Subject: [PATCH 6/6] do not create copy dot lib directory, remove origin
+Subject: [PATCH 6/7] do not create copy dot lib directory, remove origin
 
 ---
  cmake/python.cmake           | 6 +-----
