@@ -1,10 +1,6 @@
 
 rm -rf build
 
-# ModuleNotFoundError: No module named '_sysconfigdata_x86_64_apple_darwin20_0_0'
-unset _PYTHON_SYSCONFIGDATA_NAME
-unset _CONDA_PYTHON_SYSCONFIGDATA_NAME
-
 # configure, switch off unit tests (require gtest / googletest)
 cmake . -B build -G Ninja $CMAKE_ARGS  \
         -DCMAKE_INSTALL_PREFIX=$PREFIX \
