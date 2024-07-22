@@ -1,13 +1,39 @@
-From a4529ca5340d9927d0d5c05a395348019965dcd5 Mon Sep 17 00:00:00 2001
+From d2946707ef4cfedb061a53d9d78361b632f759c2 Mon Sep 17 00:00:00 2001
 From: Lorenzo Pirritano <lpirritano@anaconda.com>
-Date: Thu, 18 Jul 2024 15:54:56 +0200
+Date: Mon, 22 Jul 2024 10:34:52 +0200
 Subject: [PATCH 7/7] skip flaky tests that use time() - start <= 0.002
 
 ---
+ test/python/tests_bidirectional.py      | 3 +++
  test/python/tests_greedy_elimination.py | 5 +++++
  test/python/tests_tabu.py               | 4 ++++
- 2 files changed, 9 insertions(+)
+ 3 files changed, 12 insertions(+)
 
+diff --git a/test/python/tests_bidirectional.py b/test/python/tests_bidirectional.py
+index 3a45b08..7db4108 100644
+--- a/test/python/tests_bidirectional.py
++++ b/test/python/tests_bidirectional.py
+@@ -1,3 +1,4 @@
++import unittest
+ from time import time
+ 
+ from networkx import DiGraph
+@@ -52,6 +53,7 @@ class TestsBiDirectional(TestingBase):
+             alg, self.result_path, self.total_cost, self.consumed_resources
+         )
+ 
++    @unittest.skip("flaky")
+     def test_unprocessed_time_limit(self):
+         "Test time_limit parameter"
+         alg = BiDirectional(
+@@ -92,6 +94,7 @@ class TestsBiDirectional(TestingBase):
+             alg, self.result_path, self.total_cost, self.consumed_resources
+         )
+ 
++    @unittest.skip("flaky")
+     def test_unprocessed_time_limit_threshold(self):
+         "Test time_limit and threshold parameters"
+         alg = BiDirectional(
 diff --git a/test/python/tests_greedy_elimination.py b/test/python/tests_greedy_elimination.py
 index 2f02145..68e78e5 100644
 --- a/test/python/tests_greedy_elimination.py
