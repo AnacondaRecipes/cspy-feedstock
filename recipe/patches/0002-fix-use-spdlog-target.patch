@@ -1,0 +1,49 @@
+From fc251d3e80dfe1f06dea269074a684c93d8ee578 Mon Sep 17 00:00:00 2001
+From: Lorenzo Pirritano <lpirritano@anaconda.com>
+Date: Tue, 2 Jul 2024 18:05:45 +0200
+Subject: [PATCH 2/7] fix use spdlog target
+
+---
+ src/cc/CMakeLists.txt        | 5 ++---
+ src/cc/python/CMakeLists.txt | 2 +-
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/src/cc/CMakeLists.txt b/src/cc/CMakeLists.txt
+index cf16d04..8be8cb0 100644
+--- a/src/cc/CMakeLists.txt
++++ b/src/cc/CMakeLists.txt
+@@ -11,8 +11,7 @@ target_sources(
+ target_include_directories(
+   BiDirectionalCpp
+   PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>
+-         $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}>
+-         $<BUILD_INTERFACE:${spdlog_SOURCE_DIR}/include>)
++         $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}>)
+ 
+ target_compile_features(BiDirectionalCpp PUBLIC cxx_std_20)
+ 
+@@ -25,7 +24,7 @@ set_target_properties(
+              PUBLIC_HEADER "${CMAKE_CURRENT_BINARY_DIR}/config.h"
+              VERSION ${PROJECT_VERSION})
+ 
+-target_link_libraries(BiDirectionalCpp PRIVATE LEMON::LEMON)
++target_link_libraries(BiDirectionalCpp PRIVATE LEMON::LEMON spdlog::spdlog)
+ 
+ add_library(${PROJECT_NAME}::BiDirectionalCpp ALIAS BiDirectionalCpp)
+ 
+diff --git a/src/cc/python/CMakeLists.txt b/src/cc/python/CMakeLists.txt
+index 847a7e3..16a1fd7 100644
+--- a/src/cc/python/CMakeLists.txt
++++ b/src/cc/python/CMakeLists.txt
+@@ -29,7 +29,7 @@ elseif(UNIX)
+     pyBiDirectionalCpp PROPERTIES INSTALL_RPATH
+                                   "$ORIGIN:$ORIGIN/../../${PROJECT_NAME}/.libs")
+ endif()
+-target_link_libraries(pyBiDirectionalCpp PRIVATE BiDirectionalCpp LEMON::LEMON)
++target_link_libraries(pyBiDirectionalCpp PRIVATE BiDirectionalCpp LEMON::LEMON spdlog::spdlog)
+ 
+ # Variable PYTHON_LIBRARIES can contains keyword `optimized` which won't be
+ # interpreted inside a generator expression. i.e. we can't use:
+-- 
+2.39.1
+

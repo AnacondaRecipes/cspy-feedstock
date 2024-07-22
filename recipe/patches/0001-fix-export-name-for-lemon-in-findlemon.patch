@@ -1,0 +1,25 @@
+From 53c47b8e8fd1d823e5f25eded2186a50dc924b5f Mon Sep 17 00:00:00 2001
+From: Lorenzo Pirritano <lpirritano@anaconda.com>
+Date: Wed, 26 Jun 2024 16:11:32 +0200
+Subject: [PATCH 1/7] fix export name for lemon in findlemon
+
+---
+ cmake/FindLEMON.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/FindLEMON.cmake b/cmake/FindLEMON.cmake
+index a3045d2..36c2811 100644
+--- a/cmake/FindLEMON.cmake
++++ b/cmake/FindLEMON.cmake
+@@ -31,7 +31,7 @@ endif(LEMON_FOUND)
+ # mark_as_advanced(LEMON_LIBRARY LEMON_INCLUDE_DIR)
+ 
+ add_library(lemon INTERFACE)
+-add_library(lemon::lemon ALIAS lemon)
++add_library(LEMON::LEMON ALIAS lemon)
+ target_include_directories(lemon INTERFACE ${LEMON_INCLUDE_DIRS})
+ target_link_libraries(lemon INTERFACE ${LEMON_LIBRARIES})
+ 
+-- 
+2.39.1
+
