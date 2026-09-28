@@ -18,18 +18,17 @@ source:
     - patches/0007-skip-flaky-tests-that-use-time.patch
 
 build:
-  number: 0
+  number: 1
   missing_dso_whitelist:
     - '$RPATH/ld64.so.1'  # [s390x]
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
     - ninja
-    - patch       # [not win]
-    - m2-patch    # [win]
   host:
     - python
     - pip
